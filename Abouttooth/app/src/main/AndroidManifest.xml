@@ -31,7 +31,10 @@
         <activity android:name=".NavigationTabs.DenticeActivity"/>
         <activity android:name=".NavigationTabs.AboutToothActivity"/>
         <activity android:name=".NavigationTabs.SettingActivity"/>
-        <activity android:name=".Tabs.Schedule.AddScheduleActivity">
+        <activity android:name=".Tabs.Schedule.AddScheduleActivity"/>
+            <activity android:name=".Tabs.Condition.GraphActivity"/>
+        <activity android:name=".Tabs.Condition.MyflaActivity"/>
+        <activity android:name=".Tabs.Condition.TimerActivity">
         </activity>
     </application>
 
