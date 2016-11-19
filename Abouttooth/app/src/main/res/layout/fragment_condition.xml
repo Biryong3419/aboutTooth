@@ -18,17 +18,18 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:background="@drawable/sky"
-        android:layout_height="204dp"
+        android:layout_height="230dp"
         android:weightSum="1">
 
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="119dp">
+            android:layout_height="119dp"
+            android:layout_weight="0.65">
 
             <ImageButton
-                android:layout_width="183dp"
-                android:layout_height="88dp"
+                android:layout_width="209dp"
+                android:layout_height="127dp"
                 android:layout_gravity="center"
                 android:background="@drawable/graphsample"
 
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/aaaaa"
-            android:layout_weight="0.25" />
+            android:layout_weight="0.03" />
 
         <TextView
             android:text="Nick Name"
