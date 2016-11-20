@@ -24,9 +24,9 @@ public class TimerActivity extends AppCompatActivity {
     Button buttonStart;
     ProgressBar progressBar;
     EditText textCounter;
-    private static boolean timerFlag=true;
+    private static boolean timerFlag;
     MyCountDownTimer myCountDownTimer;
-
+int minus=0;
 
     String hh;
 //edittext 값을 변경한다.
@@ -35,6 +35,7 @@ public class TimerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+        timerFlag=true;
         Toast.makeText(TimerActivity.this,"여기까지된다1",Toast.LENGTH_LONG).show();
         //   String text=pref.getString("token","");
 hh = loadvalue();
@@ -52,10 +53,11 @@ hh = loadvalue();
 
                 if(timerFlag == true) {
                     progressBar.setProgress(100);
-                    myCountDownTimer =  new MyCountDownTimer(Integer.valueOf(textCounter.getText().toString()), 11);
+                    minus=0;
+                    myCountDownTimer =  new MyCountDownTimer(Integer.valueOf(textCounter.getText().toString())*1000,500);
                     buttonStart.setText("stop");
                     myCountDownTimer.start();
-                    timerFlag=false;
+                   timerFlag=false;
                 }
                 else{
                     myCountDownTimer.cancel();
@@ -75,8 +77,11 @@ timerFlag=true;
 
         @Override
         public void onTick(long millisUntilFinished) {
+
             textCounter.setText(String.valueOf(millisUntilFinished/1000));
-            int progress = (int) (millisUntilFinished/100);
+            //int progress = (int) (100);
+            int progress = (int) ((millisUntilFinished/1000)+ (100-millisUntilFinished/1000)-minus);
+            minus++;
             progressBar.setProgress(progress);
         }
 
@@ -87,6 +92,14 @@ timerFlag=true;
             buttonStart.setText("start");
             textCounter.setText("Finished");
             progressBar.setProgress(0);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+
+            }
+            textCounter.setText(loadvalue());
+
         }
 
     }
@@ -98,7 +111,7 @@ timerFlag=true;
  }
     private String loadvalue(){
         SharedPreferences pref=getSharedPreferences("timervalue",Activity.MODE_PRIVATE);
-        String value=pref.getString("value","20000");
+        String value=pref.getString("value","15");
 return value;
     }
 

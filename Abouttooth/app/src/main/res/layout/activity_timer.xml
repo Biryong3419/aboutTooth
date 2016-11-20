@@ -4,16 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Tabs.Condition.TimerActivity" >
+
+    tools:context=".Tabs.Condition.TimerActivity"
+    android:weightSum="1">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:id="@+id/toolbar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="64px"
+            android:layout_height="64px"
+            android:background="@drawable/cancle"
+            android:layout_gravity="left" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="TIMER"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:text="시간을 입력해주세요(초)"
+        android:gravity="center"
+        android:height="50dp"
+        android:layout_marginTop="100dp"
+        android:textSize="35sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2" />
 
     <EditText
         android:id="@+id/counter"
         android:layout_width="match_parent"
-        android:layout_height="231dp"
+        android:layout_height="92dp"
         android:textStyle="bold"
         android:textSize="50sp"
         android:textCursorDrawable="@null"
@@ -34,6 +64,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start" />
+
+
 
 
 </LinearLayout>
