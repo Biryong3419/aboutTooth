@@ -22,7 +22,7 @@ public class ConditionFragment extends Fragment
 
 {
     ImageButton imgbtn;
-    TextView txtm,txtv1,txtv2,txtv3,txtv4;
+    TextView txtm,txtv1,txtv3,txtv4;
     private static int count1=0;
     private static int count2=0;
     private static int count3=0;
@@ -36,7 +36,6 @@ public class ConditionFragment extends Fragment
         txtm=(TextView)v.findViewById(R.id.aaaaa);
         txtv4=(TextView)v.findViewById(R.id.contxtv4);
         txtv3=(TextView)v.findViewById(R.id.contxtv3);
-        txtv2=(TextView)v.findViewById(R.id.contxtv2);
      txtv1=   (TextView)v.findViewById(R.id.contxtv1);
         txtv1.setOnClickListener(new View.OnClickListener()
         {
@@ -54,30 +53,10 @@ public class ConditionFragment extends Fragment
                 txtm.setText("GRAPH");
                 txtv4.setBackgroundColor(WHITE);
                 txtv3.setBackgroundColor(WHITE);
-                txtv2.setBackgroundColor(WHITE);
                 txtv1.setBackgroundColor(GRAY);
             }
         });
-        txtv2.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                count1=count3=count4=0;
-                count2++;
-                if(count2==2){
-                    Intent intent = new Intent(getContext(),PictureActivity.class);
-                    startActivity(intent);
-                    count2=0;
-                }
-                else
-                    imgbtn.setBackgroundResource(R.drawable.picturesample);
-                txtm.setText("PICTURE");
-                txtv4.setBackgroundColor(WHITE);
-                txtv3.setBackgroundColor(WHITE);
-                txtv2.setBackgroundColor(GRAY);
-                txtv1.setBackgroundColor(WHITE);
-            }
-        });
+
         txtv3.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -95,7 +74,7 @@ public class ConditionFragment extends Fragment
 
                 txtv4.setBackgroundColor(WHITE);
                 txtv3.setBackgroundColor(GRAY);
-                txtv2.setBackgroundColor(WHITE);
+
                 txtv1.setBackgroundColor(WHITE);
             }
         });
@@ -116,7 +95,6 @@ public class ConditionFragment extends Fragment
 
                 txtv4.setBackgroundColor(GRAY);
                 txtv3.setBackgroundColor(WHITE);
-                txtv2.setBackgroundColor(WHITE);
                 txtv1.setBackgroundColor(WHITE);
             }
         });

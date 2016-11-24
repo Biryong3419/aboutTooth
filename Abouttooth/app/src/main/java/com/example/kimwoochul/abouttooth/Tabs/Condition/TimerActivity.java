@@ -19,101 +19,97 @@ import com.example.kimwoochul.abouttooth.R;
  * Created by Jh on 2016-11-14.
  */
 
-public class TimerActivity extends AppCompatActivity {
 
-    Button buttonStart;
-    ProgressBar progressBar;
-    EditText textCounter;
-    private static boolean timerFlag;
-    MyCountDownTimer myCountDownTimer;
-int minus=0;
+public class TimerActivity extends Activity implements View.OnClickListener {
 
-    String hh;
-//edittext 값을 변경한다.
+    int i = -1;
+    ProgressBar mProgressBar, mProgressBar1;
+Button btn_cancel;
+    private Button buttonStartTime, buttonStopTime;
+    private EditText edtTimerValue;
+    private TextView textViewShowTime;
+    private CountDownTimer countDownTimer;
+    private long totalTimeCountInMilliseconds;
+
     @Override
-
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
-        timerFlag=true;
-        Toast.makeText(TimerActivity.this,"여기까지된다1",Toast.LENGTH_LONG).show();
-        //   String text=pref.getString("token","");
-hh = loadvalue();
-        buttonStart = (Button)findViewById(R.id.start);
-        progressBar = (ProgressBar)findViewById(R.id.progressbar);
-        textCounter = (EditText) findViewById(R.id.counter);
-        textCounter.setText(hh);
 
 
+        buttonStartTime = (Button) findViewById(R.id.button_timerview_start);
+        buttonStopTime = (Button) findViewById(R.id.button_timerview_stop);
+btn_cancel=(Button) findViewById(R.id.btn_timer_cancel);
+        textViewShowTime = (TextView)
+                findViewById(R.id.textView_timerview_time);
+        edtTimerValue = (EditText) findViewById(R.id.textview_timerview_back);
 
-        buttonStart.setOnClickListener(new View.OnClickListener(){
+        buttonStartTime.setOnClickListener(this);
+        buttonStopTime.setOnClickListener(this);
 
+      //  mProgressBar = (ProgressBar) findViewById(R.id.progressbar_timerview);
+        mProgressBar1 = (ProgressBar) findViewById(R.id.progressbar1_timerview);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(timerFlag == true) {
-                    progressBar.setProgress(100);
-                    minus=0;
-                    myCountDownTimer =  new MyCountDownTimer(Integer.valueOf(textCounter.getText().toString())*1000,500);
-                    buttonStart.setText("stop");
-                    myCountDownTimer.start();
-                   timerFlag=false;
-                }
-                else{
-                    myCountDownTimer.cancel();
-                    buttonStart.setText("start");
-timerFlag=true;
-                    progressBar.setProgress(0);
-                }
-            }});
-
+                finish();
+            }
+        });
     }
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_timerview_start) {
 
-    public class MyCountDownTimer extends CountDownTimer {
+            setTimer();
 
-        public MyCountDownTimer(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
+            buttonStartTime.setVisibility(View.INVISIBLE);
+            buttonStopTime.setVisibility(View.VISIBLE);
+            //mProgressBar.setVisibility(View.INVISIBLE);
+
+            startTimer();
+            //mProgressBar1.setVisibility(View.VISIBLE);
+
+
+        } else if (v.getId() == R.id.button_timerview_stop) {
+            countDownTimer.cancel();
+            countDownTimer.onFinish();
+            //mProgressBar1.setVisibility(View.GONE);
+            //mProgressBar.setVisibility(View.VISIBLE);
+            edtTimerValue.setVisibility(View.VISIBLE);
+            buttonStartTime.setVisibility(View.VISIBLE);
+            buttonStopTime.setVisibility(View.INVISIBLE);
         }
+    }
+    private void setTimer(){
+        int time = 0;
+        if (!edtTimerValue.getText().toString().equals("")) {
+            time = Integer.parseInt(edtTimerValue.getText().toString());
+        } else
+            Toast.makeText(TimerActivity.this, "Please Enter Minutes...",
+                    Toast.LENGTH_LONG).show();
+        totalTimeCountInMilliseconds =  time * 1000;
+        mProgressBar1.setMax( time * 1000);
+    }
+    private void startTimer() {
+        countDownTimer = new CountDownTimer(totalTimeCountInMilliseconds, 1) {
+            @Override
+            public void onTick(long leftTimeInMilliseconds) {
+                long seconds = leftTimeInMilliseconds / 1000;
+                mProgressBar1.setProgress((int) (leftTimeInMilliseconds));
 
-        @Override
-        public void onTick(long millisUntilFinished) {
-
-            textCounter.setText(String.valueOf(millisUntilFinished/1000));
-            //int progress = (int) (100);
-            int progress = (int) ((millisUntilFinished/1000)+ (100-millisUntilFinished/1000)-minus);
-            minus++;
-            progressBar.setProgress(progress);
-        }
-
-        @Override
-        public void onFinish() {
-            timerFlag=true;
-           saveValue();
-            buttonStart.setText("start");
-            textCounter.setText("Finished");
-            progressBar.setProgress(0);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+                textViewShowTime.setText(String.format("%02d:%02d:%02d", seconds / 3600,
+                        (seconds % 3600) / 60, (seconds % 60)));
+            }
+            @Override
+            public void onFinish() {
+                textViewShowTime.setText("00:00");
+                textViewShowTime.setVisibility(View.VISIBLE);
+                buttonStartTime.setVisibility(View.VISIBLE);
+                buttonStopTime.setVisibility(View.VISIBLE);
+                //mProgressBar.setVisibility(View.VISIBLE);
+              //  mProgressBar1.setVisibility(View.GONE);
 
             }
-            textCounter.setText(loadvalue());
-
-        }
-
+        }.start();
     }
- private void saveValue(){
-     SharedPreferences pref=getSharedPreferences("timervalue",Activity.MODE_PRIVATE);
-     SharedPreferences.Editor editor = pref.edit();
-     editor.putString("value",textCounter.getText().toString());
-     editor.commit();
- }
-    private String loadvalue(){
-        SharedPreferences pref=getSharedPreferences("timervalue",Activity.MODE_PRIVATE);
-        String value=pref.getString("value","15");
-return value;
-    }
-
-
 }

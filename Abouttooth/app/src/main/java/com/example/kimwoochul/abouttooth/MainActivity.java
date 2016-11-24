@@ -20,7 +20,7 @@ import com.example.kimwoochul.abouttooth.NavigationTabs.NoticeActivity;
 import com.example.kimwoochul.abouttooth.NavigationTabs.SettingActivity;
 import com.example.kimwoochul.abouttooth.TabTools.TabFragment;
 
-public class MainActivity extends ActionBarActivity implements  NavigationView.OnNavigationItemSelectedListener
+public class MainActivity extends ActionBarActivity //implements  NavigationView.OnNavigationItemSelectedListener
 {
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity implements  NavigationView.O
          * Setup click events on the Navigation View Items.
          */
 
-        mNavigationView.setNavigationItemSelectedListener(this);
+      //  mNavigationView.setNavigationItemSelectedListener(this);
 
         /**
          * Setup Drawer Toggle of the Toolbar
@@ -62,50 +62,50 @@ public class MainActivity extends ActionBarActivity implements  NavigationView.O
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout, toolbar,R.string.app_name,
                 R.string.app_name);
 
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+  //      mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-        mDrawerToggle.syncState();
+      //  mDrawerToggle.syncState();
 
     }
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_item_notice)
-        {
-            startActivity(new Intent(MainActivity.this, NoticeActivity.class));
-        }
-        else if (id == R.id.nav_item_message)
-        {
-            startActivity(new Intent(MainActivity.this, MessageActivity.class));
-        }
-        else if (id == R.id.nav_item_dentice)
-        {
-            startActivity(new Intent(MainActivity.this, DenticeActivity.class));
-        }
-        else if (id == R.id.nav_item_abouttooth)
-        {
-            startActivity(new Intent(MainActivity.this, AboutToothActivity.class));
-        }
-        else if (id == R.id.nav_item_setting)
-        {
-            startActivity(new Intent(MainActivity.this, SettingActivity.class));
-        }
-        else if (id == R.id.nav_item_logout)
-        {
-            Toast.makeText(getApplicationContext(), "로그아웃", Toast.LENGTH_SHORT);
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
+//    public boolean onNavigationItemSelected(MenuItem item)
+//    {
+//        // Handle navigation view item clicks here.
+//        int id = item.getItemId();
+//
+//        if (id == R.id.nav_item_notice)
+//        {
+//            startActivity(new Intent(MainActivity.this, NoticeActivity.class));
+//        }
+//        else if (id == R.id.nav_item_message)
+//        {
+//            startActivity(new Intent(MainActivity.this, MessageActivity.class));
+//        }
+//        else if (id == R.id.nav_item_dentice)
+//        {
+//            startActivity(new Intent(MainActivity.this, DenticeActivity.class));
+//        }
+//        else if (id == R.id.nav_item_abouttooth)
+//        {
+//            startActivity(new Intent(MainActivity.this, AboutToothActivity.class));
+//        }
+//        else if (id == R.id.nav_item_setting)
+//        {
+//            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+//        }
+//        else if (id == R.id.nav_item_logout)
+//        {
+//            Toast.makeText(getApplicationContext(), "로그아웃", Toast.LENGTH_SHORT);
+//        }
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawerLayout);
+//        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu)
+//    {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return true;
+//    }
 }
