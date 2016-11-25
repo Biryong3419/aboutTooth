@@ -66,10 +66,10 @@
 
         <TextView
             android:text="GRAPH"
-            android:paddingTop="30dp"
+            android:paddingTop="25dp"
             android:onClick="con_graph"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:gravity="center_horizontal"
             android:id="@+id/contxtv1" />
         <TextView
@@ -79,9 +79,9 @@
         <TextView
             android:text="TIMER"
             android:onClick="con_timer"
-            android:paddingTop="30dp"
+            android:paddingTop="25dp"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:gravity="center_horizontal"
             android:id="@+id/contxtv3" />
         <TextView
@@ -92,8 +92,8 @@
             android:text="MY FLA"
             android:onClick="con_myfla"
             android:layout_width="match_parent"
-            android:paddingTop="30dp"
-            android:layout_height="80dp"
+            android:paddingTop="25dp"
+            android:layout_height="70dp"
             android:gravity="center_horizontal"
             android:id="@+id/contxtv4" />
 
