@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -41,6 +42,8 @@ public class TabFragment extends Fragment {
          */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
 
+
+
         /**
          * Now , this is a workaround ,
          * The setupWithViewPager dose't works without the runnable .
@@ -54,7 +57,7 @@ public class TabFragment extends Fragment {
             }
         });
 
-        return x;
+       return x;
 
     }
 

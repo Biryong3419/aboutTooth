@@ -44,9 +44,11 @@ public class ConditionFragment extends Fragment
                 count2=count3=count4=0;
                 count1++;
                 if(count1==2){
+
                     Intent intent = new Intent(getContext(),GraphActivity.class);
                     startActivity(intent);
                     count1=0;
+
                 }
                 else
                     imgbtn.setBackgroundResource(R.drawable.graphsample);
@@ -83,6 +85,8 @@ public class ConditionFragment extends Fragment
             @Override
             public void onClick(View v) {
                 count1=count3=count2=0;
+                if(count4==0)
+
                 count4++;
                 if(count4==2){
                     Intent intent = new Intent(getContext(),MyflaActivity.class);
