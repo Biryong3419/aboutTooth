@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              tools:context="com.example.kimwoochul.abouttooth.NavigationTabs.NoticeActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:id="@+id/toolbar_notice"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <Button
+            android:id="@+id/btn_notice_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:background="@drawable/cancle"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="NOTICE"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:id="@+id/toolbar_notice_title"/>
+
+    </android.support.v7.widget.Toolbar>
+
+</LinearLayout>

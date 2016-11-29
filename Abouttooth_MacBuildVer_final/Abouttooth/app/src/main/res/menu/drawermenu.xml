@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="Notice"
+            android:id="@+id/nav_item_notice"
+            android:icon="@android:drawable/ic_popup_reminder"/>
+
+        <item
+            android:title="Message"
+            android:id="@+id/nav_item_message"
+            android:icon="@android:drawable/ic_dialog_email"/>
+
+        <item
+            android:title="Dentice"
+            android:id="@+id/nav_item_dentice"
+            android:icon="@android:drawable/btn_star_big_off"/>
+
+        <item
+            android:title="About tooth"
+            android:id="@+id/nav_item_abouttooth"
+            android:icon="@android:drawable/sym_action_chat"/>
+
+        <item
+            android:title="Setting"
+            android:id="@+id/nav_item_setting"
+            android:icon="@android:drawable/ic_delete"/>
+    </group>
+
+    <item
+        android:id="@+id/nav_item_logout"
+        android:title="Log Out"
+        android:icon="@android:drawable/ic_dialog_dialer"/>
+</menu>
